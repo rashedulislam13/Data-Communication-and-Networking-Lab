@@ -1,0 +1,118 @@
+Switch one:
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name HR
+Switch(config-vlan)#exit
+
+Switch(config)#int fa 0/2	
+Switch(config-if)#swi acc vlan 10
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/3
+Switch(config-if)#swi acc vlan 10
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/4
+Switch(config-if)#swi acc vlan 20
+Switch(config-if)#exit
+
+Switch(config)#
+%LINK-5-CHANGED: Interface FastEthernet0/5, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/5, changed state to up
+
+Switch(config)#int fa 0/5
+Switch(config-if)#swi acc vlan 20
+Switch(config-if)#exit
+
+Switch(config)#
+
+
+
+
+
+
+
+
+
+Switch one Trunk Mode:
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#int fa 0/1
+Switch(config-if)#swi mode trunk
+
+Switch(config-if)#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to down
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+Switch(config-if)#exit
+Switch(config)#do wr
+Building configuration...
+[OK]
+Switch(config)#
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
+
+
+
+
+
+
+Swich two:
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#vlan 10
+Switch(config-vlan)#name IT
+Switch(config-vlan)#exit
+
+Switch(config)#vlan 20
+Switch(config-vlan)#name HR
+Switch(config-vlan)#exit
+
+Switch(config)#int fa 0/2
+Switch(config-if)#swi acc vlan 10
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/3
+Switch(config-if)#swi acc vlan 10
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/4
+Switch(config-if)#swi acc vlan 20
+Switch(config-if)#exit
+
+Switch(config)#int fa 0/5
+Switch(config-if)#swi acc vlan 20
+Switch(config-if)#exit
+
+Switch#show vlan brief
+
+
+
+
+Switch Two Trunk mode:
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+	
+Switch(config)#int fa 0/1
+Switch(config-if)#swi mode trunk
+Switch(config-if)#exit
+
+Switch(config)#do wr
+Building configuration...
+[OK]
+Switch(config)#
+Switch#
+%SYS-5-CONFIG_I: Configured from console by console
